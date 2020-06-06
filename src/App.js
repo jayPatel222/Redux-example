@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Todos from './Todos';
+import AddTodos from './AddTodos'
+import { connect } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  render() {
+    return (
+      <div className="todo-app container">
+        <h1 className="center blue-text">Todos</h1>
+        <div onClick={this.handleClick}>
+          <Todos todosProp={this.props.todos} />
+        </div>
+        <AddTodos addTodo={this.AddTodo} />
+      </div>
+    );
+  }
+}
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos
+  }
+}
+const dispatchStateToProps = (dispatch) => {
+  return {
+    deleteTodo: (id) => { dispatch({ type: 'DELETE_POST', id: id }) }
+  }
 }
 
-export default App;
+export default connect(mapStateToProps, dispatchStateToProps)(App);
