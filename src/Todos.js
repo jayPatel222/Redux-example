@@ -5,13 +5,15 @@ const Todos = ({ todosProp, deleteTodo }) => {
   const todosList = todosProp.length ? (
     todosProp.map((todo) => {
       return (
-        <div className="collection-item" key={todo.id}>
-          <span onClick={(e) => { deleteTodo(todo.id) }}>{todo.content}</span>
+        <div className="collection-item card-panel cyan accent-2 " key={todo.id}>
+          <span onClick={(e) => { deleteTodo(todo.id) }} className="todo">{todo.content}</span>
         </div>
       );
     })
   ) : (
-      <p> No Work </p>
+      <p className="collection-item card-panel cyan accent-2 todos"> No Work Add Some Todos !!
+      
+      </p> 
     );
 
   return <div className="todos collection">

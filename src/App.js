@@ -7,9 +7,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="todo-app container">
-        <h1 className="center blue-text">Todos</h1>
-        <div onClick={this.handleClick}>
+      <div className="todo-app container ">
+        <h1 className="center cyan-text">Todos</h1>
+        <div  onClick={this.handleClick}>
           <Todos todosProp={this.props.todos} />
         </div>
         <AddTodos addTodo={this.AddTodo} />
